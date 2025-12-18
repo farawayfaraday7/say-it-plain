@@ -1,7 +1,7 @@
 {{ define "main" }}
 
 <!-- Force-load your custom CSS (cache-busted) -->
-<link rel="stylesheet" href="{{ "css/custom.css" | relURL }}?v={{ now.Unix }}">
+<link rel="stylesheet" href="{{ "css/custom.css" | abslURL }}?v={{ now.Unix }}">
 
 <main class="pb7" role="main">
   <article class="mw8 center ph3 ph4-ns sip-home sip-home-bg">
