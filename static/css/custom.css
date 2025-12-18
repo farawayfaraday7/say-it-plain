@@ -1,28 +1,31 @@
-/* =========================
-   Global site background (FORCED)
-   ========================= */
+/* =========================================================
+   SAY IT PLAIN — Fresh custom.css (GitHub Pages safe)
+   Note: Background image is set via head-additions.html (absURL),
+   not here, to avoid broken /images paths on Pages subfolders.
+   ========================================================= */
 
-html, body{
-  min-height: 100%;
-}
+/* -------------------------
+   Global readability overlay
+   (works with background set in head)
+   ------------------------- */
+html, body { min-height: 100%; }
 
-/* Put the map on the BODY and force it to win */
 body{
-  background: url("/images/background_map.png") center / cover no-repeat fixed !important;
   background-color: transparent !important;
+  position: relative;
 }
 
-/* Readability overlay (tune opacity) */
+/* Soft overlay for legibility */
 body::before{
   content:"";
   position: fixed;
   inset: 0;
-  background: rgba(255,255,255,0.40); /* LOWER = map more visible */
+  background: rgba(255,255,255,0.72); /* lower = stronger background */
   pointer-events: none;
   z-index: 0;
 }
 
-/* Make sure all page content sits above the overlay */
+/* Ensure content stays above overlay */
 body > *{
   position: relative;
   z-index: 1;
@@ -310,9 +313,7 @@ body > *{
   padding: 24px;
 }
 
-.sip-lightbox.is-open{
-  display:flex;
-}
+.sip-lightbox.is-open{ display:flex; }
 
 .sip-lightbox-img{
   max-width: 96vw;
@@ -341,7 +342,6 @@ body > *{
 
 /* =========================
    Statement page image
-   Use markdown: ![Statement header](/images/statement.jpg)
    ========================= */
 
 main img[alt="Statement header"]{
@@ -352,7 +352,5 @@ main img[alt="Statement header"]{
   margin: 1rem auto 1.5rem;
 }
 
-/* Optional: improve readability for long text pages */
-.measure-wide{
-  max-width: 70ch;
-}
+/* Readability for long text blocks */
+.measure-wide{ max-width: 70ch; }
