@@ -6,7 +6,6 @@
 <main class="pb7" role="main">
   <article class="mw8 center ph3 ph4-ns sip-home sip-home-bg">
 
-
     <section class="sip-hero">
       <img class="sip-hero-logo" src="{{ "images/logo.png" | relURL }}" alt="Say It Plain logo">
       <h1 class="sip-title">{{ .Site.Title }}</h1>
@@ -21,34 +20,34 @@
       </p>
 
       <div class="sip-cta">
-        <a class="sip-btn" href="{{ "/work/" | relURL }}">Enter the Gallery</a>
-        <a class="sip-btn sip-btn-outline" href="{{ "/community/" | relURL }}">Join the Forum</a>
+        <a class="sip-btn" href="{{ "work/" | relURL }}">Enter the Gallery</a>
+        <a class="sip-btn sip-btn-outline" href="{{ "community/" | relURL }}">Join the Forum</a>
       </div>
-     
+
       <section class="sip-featured">
-        
-  <a class="sip-feature" href="{{ "/work/#ukraine" | relURL }}">
-    <div class="sip-feature-img">
-      <img src="{{ "images/art/ukraine/ukraine_1.jpeg" | relURL }}" alt="Ukraine featured">
-    </div>
-    <div class="sip-feature-label">Ukraine</div>
-  </a>
 
-  <a class="sip-feature" href="{{ "/work/#sudan" | relURL }}">
-    <div class="sip-feature-img">
-      <img src="{{ "images/art/sudan/sudan_6.jpeg" | relURL }}" alt="Sudan featured">
-    </div>
-    <div class="sip-feature-label">Sudan</div>
-  </a>
+        <a class="sip-feature" href="{{ "work/" | relURL }}#ukraine">
+          <div class="sip-feature-img">
+            <img src="{{ "images/art/ukraine/ukraine_1.jpeg" | relURL }}" alt="Ukraine featured">
+          </div>
+          <div class="sip-feature-label">Ukraine</div>
+        </a>
 
-  <a class="sip-feature" href="{{ "/work/#palestine" | relURL }}">
-    <div class="sip-feature-img">
-      <img src="{{ "images/art/palestine/palestine.jpeg" | relURL }}" alt="Palestine featured">
-    </div>
-    <div class="sip-feature-label">Palestine</div>
-  </a>
-</section>
+        <a class="sip-feature" href="{{ "work/" | relURL }}#sudan">
+          <div class="sip-feature-img">
+            <img src="{{ "images/art/sudan/sudan_6.jpeg" | relURL }}" alt="Sudan featured">
+          </div>
+          <div class="sip-feature-label">Sudan</div>
+        </a>
 
+        <a class="sip-feature" href="{{ "work/" | relURL }}#palestine">
+          <div class="sip-feature-img">
+            <img src="{{ "images/art/palestine/palestine.jpeg" | relURL }}" alt="Palestine featured">
+          </div>
+          <div class="sip-feature-label">Palestine</div>
+        </a>
+
+      </section>
     </section>
 
     <section class="sip-section">
@@ -72,9 +71,9 @@
     <section class="sip-section">
       <h2>Start here</h2>
       <ul>
-        <li><a href="{{ "/work/" | relURL }}">Gallery</a></li>
-        <li><a href="{{ "/community/" | relURL }}">Forum</a></li>
-        <li><a href="{{ "/statement/" | relURL }}">Statement</a></li>
+        <li><a href="{{ "work/" | relURL }}">Gallery</a></li>
+        <li><a href="{{ "community/" | relURL }}">Forum</a></li>
+        <li><a href="{{ "statement/" | relURL }}">Statement</a></li>
       </ul>
     </section>
 
