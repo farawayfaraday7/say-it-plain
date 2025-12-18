@@ -1,0 +1,14 @@
+baseURL = "/"
+languageCode = "en-us"
+title = "Say It Plain"
+theme = "ananke"
+
+[params]
+  description = "Post your work. Make your case."
+  custom_css = ["css/custom.css"]
+  custom_js  = ["js/carousel.js"]
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

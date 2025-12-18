@@ -1,0 +1,89 @@
+{{ define "main" }}
+
+<!-- Force-load custom CSS + JS (cache-busted) so theme/head partials can't block it -->
+<link rel="stylesheet" href="{{ "css/custom.css" | relURL }}?v={{ now.Unix }}">
+<script defer src="{{ "js/carousel.js" | relURL }}?v={{ now.Unix }}"></script>
+
+<main class="pb7" role="main">
+  <article class="mw8 center ph3 ph4-ns">
+    <h1 class="f1-l f2 mt4 mb3">{{ .Title }}</h1>
+    {{ with .Content }}<div class="measure-wide lh-copy">{{ . }}</div>{{ end }}
+
+    {{ $topics := slice "Ukraine" "Sudan" "Palestine" }}
+    {{ $work := where .Site.RegularPages "Section" "work" }}
+
+    {{ range $topic := $topics }}
+      {{ $items := where $work "Params.topics" "intersect" (slice $topic) }}
+      {{ if gt (len $items) 0 }}
+        {{ $rowId := printf "carousel-%s" (urlize $topic) }}
+
+        <section class="mt5" id="{{ urlize $topic }}">
+
+          <div class="carousel-head">
+            <h2 class="f3 fw7 mv0">{{ $topic }}</h2>
+          </div>
+
+          <div class="carousel-wrap">
+            <button class="carousel-overlay left" type="button"
+              onclick="sipCarouselScroll('{{ $rowId }}', -1)"
+              aria-label="Scroll {{ $topic }} left">‹</button>
+
+            <div id="{{ $rowId }}" class="carousel" tabindex="0" aria-label="{{ $topic }} artworks">
+              {{ range $items.ByDate.Reverse }}
+                {{ $cardId := printf "card-%s" (md5 .RelPermalink) }}
+
+                <div class="carousel-card">
+                  <a class="link near-black" href="{{ .RelPermalink }}">
+                    <div id="{{ $cardId }}" class="carousel-thumb" data-index="0">
+
+                      {{/* Multi-image preferred */}}
+                      {{ $imgs := .Params.covers }}
+
+                      {{/* Fallback to single */}}
+                      {{ if not $imgs }}
+                        {{ with .Params.cover }}{{ $imgs = slice . }}{{ end }}
+                      {{ end }}
+
+                      {{ if $imgs }}
+                        {{ range $i, $src := $imgs }}
+                          <img class="card-slide {{ if eq $i 0 }}is-active{{ end }}"
+                               src="{{ $src | relURL }}"
+                               alt="{{ $.Title }}">
+                        {{ end }}
+                      {{ end }}
+
+                      {{ if and $imgs (gt (len $imgs) 1) }}
+                        <button class="card-nav prev" type="button"
+                          onclick="sipCardSlide(event, '{{ $cardId }}', -1)"
+                          aria-label="Previous image">‹</button>
+
+                        <button class="card-nav next" type="button"
+                          onclick="sipCardSlide(event, '{{ $cardId }}', 1)"
+                          aria-label="Next image">›</button>
+                      {{ end }}
+                    </div>
+
+                    <div class="carousel-title">{{ .Title }}</div>
+                  </a>
+                </div>
+              {{ end }}
+            </div>
+
+            <button class="carousel-overlay right" type="button"
+              onclick="sipCarouselScroll('{{ $rowId }}', 1)"
+              aria-label="Scroll {{ $topic }} right">›</button>
+          </div>
+        </section>
+      {{ end }}
+    {{ end }}
+
+  </article>
+
+  <!-- Fullscreen Lightbox -->
+  <div id="sipLightbox" class="sip-lightbox" aria-hidden="true">
+    <button class="sip-lightbox-close" type="button" aria-label="Close">×</button>
+    <img class="sip-lightbox-img" alt="">
+  </div>
+</main>
+
+{{ end }}

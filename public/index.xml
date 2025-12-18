@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Home on Say It Plain</title>
+    <link>//localhost:1313/</link>
+    <description>Recent content in Home on Say It Plain</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 18 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Palestine</title>
+      <link>//localhost:1313/work/piece-03/</link>
+      <pubDate>Thu, 18 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/work/piece-03/</guid>
+      <description>&lt;h2 id=&#34;claim&#34;&gt;Claim&lt;/h2&gt;&#xA;&lt;p&gt;These pieces represent a desolate, war-stricken landscape of Palestine&lt;/p&gt;&#xA;&lt;h3 id=&#34;prompt&#34;&gt;Prompt&lt;/h3&gt;&#xA;&lt;p&gt;What do you disagree with in this piece’s claim — and why?&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Sudan box</title>
+      <link>//localhost:1313/work/piece-01/</link>
+      <pubDate>Thu, 18 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/work/piece-01/</guid>
+      <description>&lt;h2 id=&#34;claim&#34;&gt;Claim&lt;/h2&gt;&#xA;&lt;p&gt;Sudan is amidst a civil war and humanitarian crisis, this piece represents the face of suffering of women in Sudan.&lt;/p&gt;&#xA;&lt;h3 id=&#34;prompt&#34;&gt;Prompt&lt;/h3&gt;&#xA;&lt;p&gt;What do you disagree with in this piece’s claim — and why?&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Ukraine</title>
+      <link>//localhost:1313/work/piece-02/</link>
+      <pubDate>Thu, 18 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/work/piece-02/</guid>
+      <description>&lt;h2 id=&#34;claim&#34;&gt;Claim&lt;/h2&gt;&#xA;&lt;p&gt;This piece represents the tension and desperation of soldiers in the Ukraine/Russia war.&lt;/p&gt;&#xA;&lt;h3 id=&#34;prompt&#34;&gt;Prompt&lt;/h3&gt;&#xA;&lt;p&gt;What do you disagree with in this piece’s claim — and why?&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

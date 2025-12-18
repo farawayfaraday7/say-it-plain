@@ -1,0 +1,16 @@
+{{ define "main" }}
+<main class="pb7" role="main">
+  <article class="mw8 center ph3 ph4-ns">
+    <h1 class="f2 fw8 mt4 mb3">{{ .Title }}</h1>
+
+    <div class="lh-copy measure-wide">
+      {{ .Content }}
+    </div>
+
+    <hr style="margin:2rem 0; opacity:.3;">
+
+    <h2 class="f4 fw8 mb3">Comments</h2>
+    {{ partial "comments.html" . }}
+  </article>
+</main>
+{{ end }}
