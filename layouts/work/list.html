@@ -2,7 +2,7 @@
 
 <!-- Force-load custom CSS + JS (cache-busted) so theme/head partials can't block it -->
 <link rel="stylesheet" href="{{ "css/custom.css" | relURL }}?v={{ now.Unix }}">
-<script defer src="{{ "js/carousel.js" | abslURL }}?v={{ now.Unix }}"></script>
+<script defer src="{{ "js/carousel.js" | absURL }}?v={{ now.Unix }}"></script>
 
 <main class="pb7" role="main">
   <article class="mw8 center ph3 ph4-ns">
@@ -33,7 +33,7 @@
                 {{ $cardId := printf "card-%s" (md5 .RelPermalink) }}
 
                 <div class="carousel-card">
-                  <a class="link near-black" href="{{ .RelPermalink }}">
+                  <a class="link near-black" href="{{ .RelPermalink | relURL }}"
                     <div id="{{ $cardId }}" class="carousel-thumb" data-index="0">
 
                       {{/* Multi-image preferred */}}
@@ -47,7 +47,7 @@
                       {{ if $imgs }}
                         {{ range $i, $src := $imgs }}
                           <img class="card-slide {{ if eq $i 0 }}is-active{{ end }}"
-                               src="{{ $src | relURL }}"
+                               src="{{ $src | absURL }}"
                                alt="{{ $.Title }}">
                         {{ end }}
                       {{ end }}
