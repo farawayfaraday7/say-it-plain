@@ -1,4 +1,4 @@
-baseURL = "baseURL = "https://farawayfaraday7.github.io/say-it-plain/"
+baseURL = "https://farawayfaraday7.github.io/say-it-plain/"
 languageCode = "en-us"
 title = "Say It Plain"
 theme = "ananke"
@@ -12,5 +12,4 @@ theme = "ananke"
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
-
 
