@@ -1,7 +1,7 @@
 {{ define "main" }}
 
-<!-- Force-load custom CSS + JS (cache-busted) so theme/head partials can't block it -->
-<link rel="stylesheet" href="{{ "css/custom.css" | relURL }}?v={{ now.Unix }}">
+<!-- Ensure custom assets load even if theme partials are picky -->
+<link rel="stylesheet" href="{{ "css/custom.css" | absURL }}?v={{ now.Unix }}">
 <script defer src="{{ "js/carousel.js" | absURL }}?v={{ now.Unix }}"></script>
 
 <main class="pb7" role="main">
@@ -9,16 +9,19 @@
     <h1 class="f1-l f2 mt4 mb3">{{ .Title }}</h1>
     {{ with .Content }}<div class="measure-wide lh-copy">{{ . }}</div>{{ end }}
 
+    {{/* Topics to show as separate carousels */}}
     {{ $topics := slice "Ukraine" "Sudan" "Palestine" }}
+
+    {{/* All pages in /work/ */}}
     {{ $work := where .Site.RegularPages "Section" "work" }}
 
     {{ range $topic := $topics }}
       {{ $items := where $work "Params.topics" "intersect" (slice $topic) }}
+
       {{ if gt (len $items) 0 }}
         {{ $rowId := printf "carousel-%s" (urlize $topic) }}
 
         <section class="mt5" id="{{ urlize $topic }}">
-
           <div class="carousel-head">
             <h2 class="f3 fw7 mv0">{{ $topic }}</h2>
           </div>
@@ -33,22 +36,21 @@
                 {{ $cardId := printf "card-%s" (md5 .RelPermalink) }}
 
                 <div class="carousel-card">
-                  <a class="link near-black" href="{{ .RelPermalink | relURL }}"
+                  <a class="link near-black" href="{{ .RelPermalink | relURL }}">
                     <div id="{{ $cardId }}" class="carousel-thumb" data-index="0">
 
-                      {{/* Multi-image preferred */}}
+                      {{/* Prefer .Params.covers (multiple). Fallback to .Params.cover (single). */}}
                       {{ $imgs := .Params.covers }}
-
-                      {{/* Fallback to single */}}
                       {{ if not $imgs }}
                         {{ with .Params.cover }}{{ $imgs = slice . }}{{ end }}
                       {{ end }}
 
                       {{ if $imgs }}
                         {{ range $i, $src := $imgs }}
-                          <img class="card-slide {{ if eq $i 0 }}is-active{{ end }}"
-                               src="{{ $src | absURL }}"
-                               alt="{{ $.Title }}">
+                          <img
+                            class="card-slide {{ if eq $i 0 }}is-active{{ end }}"
+                            src="{{ $src | absURL }}"
+                            alt="{{ .Title }}">
                         {{ end }}
                       {{ end }}
 
@@ -61,11 +63,13 @@
                           onclick="sipCardSlide(event, '{{ $cardId }}', 1)"
                           aria-label="Next image">›</button>
                       {{ end }}
+
                     </div>
 
                     <div class="carousel-title">{{ .Title }}</div>
                   </a>
                 </div>
+
               {{ end }}
             </div>
 
@@ -74,6 +78,7 @@
               aria-label="Scroll {{ $topic }} right">›</button>
           </div>
         </section>
+
       {{ end }}
     {{ end }}
 
