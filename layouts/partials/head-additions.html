@@ -1,10 +1,9 @@
-<link rel="stylesheet" href="{{ "css/custom.css" | absURL }}">
-
-<script defer src="{{ "js/carousel.js" | absURL }}"></script>
+<link rel="stylesheet" href="{{ "css/custom.css" | absURL }}?v={{ now.Unix }}">
+<script defer src="{{ "js/carousel.js" | absURL }}?v={{ now.Unix }}"></script>
 
 <style>
   body{
-    background-image: url('{{ "images/bg/background_map.png" | absURL }}') !important;
+    background-image: url('{{ "images/background_map.png" | absURL }}') !important;
     background-size: cover !important;
     background-position: center !important;
     background-attachment: fixed !important;
