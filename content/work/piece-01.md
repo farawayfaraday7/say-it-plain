@@ -4,7 +4,7 @@ date = 2025-12-18
 draft = false
 topics = ["Sudan"]
 
-covers = ["/images/art/sudan/sudan_1.jpeg", "/images/art/sudan/sudan_2.jpeg", "/images/art/sudan/sudan_3.jpeg", "/images/art/sudan/sudan_4.jpeg", "/images/art/sudan/sudan_5.jpeg", "/images/art/sudan/sudan_6.jpeg"]
+covers = ["images/art/sudan/sudan_1.jpeg", "images/art/sudan/sudan_2.jpeg", "images/art/sudan/sudan_3.jpeg", "images/art/sudan/sudan_4.jpeg", "images/art/sudan/sudan_5.jpeg", "images/art/sudan/sudan_6.jpeg"]
 +++
 
 ## Claim

@@ -3,7 +3,7 @@ title = "Ukraine"
 date = 2025-12-18
 draft = false
 topics = ["Ukraine"]
-covers = ["/images/art/ukraine/ukraine_1.jpeg", "/images/art/ukraine/ukraine_2.jpeg"]
+covers = ["images/art/ukraine/ukraine_1.jpeg", "images/art/ukraine/ukraine_2.jpeg"]
 +++
 
 ## Claim

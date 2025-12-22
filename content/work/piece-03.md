@@ -3,8 +3,7 @@ title = "Palestine"
 date = 2025-12-18
 draft = false
 topics = ["Palestine"]
-
-covers = ["/images/art/palestine/palestine.jpeg"]
+covers = ["images/art/palestine/palestine.jpeg"]
 +++
 
 ## Claim
