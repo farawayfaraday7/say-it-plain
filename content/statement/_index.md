@@ -2,7 +2,7 @@
 title: "Statement"
 
 ---
-![Statement header] = ["images/statement.png"]
+![Statement header](statement.png")
 
 # Statement
 
