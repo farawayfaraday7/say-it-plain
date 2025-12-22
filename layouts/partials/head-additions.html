@@ -2,10 +2,14 @@
 <script defer src="{{ "js/carousel.js" | absURL }}"></script>
 
 <style>
-  body{
-    background-image: url('{{ "/images/background_map.png" | absURL }}') !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-attachment: fixed !important;
+  /* Force the map background even if the theme applies bg-near-white / background shorthands */
+  html, body { min-height: 100%; }
+
+  body,
+  body.bg-near-white {
+    background: url('{{ "images/background_map.png" | absURL }}') center / cover fixed no-repeat !important;
   }
+
+  /* If bg-near-white is still painting over things, neutralize it */
+  .bg-near-white { background-color: transparent !important; }
 </style>
