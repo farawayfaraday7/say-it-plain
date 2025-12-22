@@ -8,22 +8,25 @@
    Global readability overlay
    (works with background set in head)
    ------------------------- */
-html, body { min-height: 100%; }
-
+html{
+  background: transparent;
+}
 body{
   background-color: transparent !important;
-  position: relative;
 }
 
+
 /* Soft overlay for legibility */
+/* Safer overlay: sits behind content, never above */
 body::before{
   content:"";
   position: fixed;
   inset: 0;
-  background: rgba(255,255,255,0.72); /* lower = stronger background */
+  background: rgba(255,255,255,0.72);
   pointer-events: none;
-  z-index: 0;
+  z-index: -1;
 }
+
 
 /* Ensure content stays above overlay */
 body > *{
