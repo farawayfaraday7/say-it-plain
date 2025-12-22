@@ -1,6 +1,327 @@
+/* =========================================================
+   SAY IT PLAIN — Fresh custom.css (stable for GitHub Pages)
+   Background-image is handled in layouts/partials/head-additions.html
+   ========================================================= */
+
+/* ---------- Global ---------- */
+html, body { min-height: 100%; }
+
 body{
-  background-image: url("../images/background_map.png") !important;
-  background-size: cover !important;
-  background-position: center !important;
-  background-attachment: fixed !important;
+  background-color: transparent !important;
 }
+
+/* Readability overlay (tune opacity) */
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  background: rgba(255,255,255,0.45); /* lower = background more visible */
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Keep everything above overlay */
+#site, main, header, footer, nav, article, section, .mw8, .mw9, .measure-wide{
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Landing ---------- */
+.sip-home{ padding-top: 2.5rem; }
+
+.sip-hero{
+  text-align:center;
+  padding: 2.5rem 0 1.5rem;
+}
+
+.sip-hero-logo{
+  width: 84px;
+  height:auto;
+  display:block;
+  margin: 0 auto 1rem;
+}
+
+.sip-title{
+  font-size: 3rem;
+  font-weight: 900;
+  margin: 0;
+}
+
+.sip-tagline{
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin: .75rem 0 1.25rem;
+}
+
+.sip-lede{
+  max-width: 52ch;
+  margin: 0 auto 1rem;
+  font-size: 1.05rem;
+}
+
+.sip-warning{
+  opacity: .85;
+  margin: 0 auto 1.5rem;
+}
+
+/* Buttons */
+.sip-cta{
+  display:flex;
+  justify-content:center;
+  gap:1rem;
+  flex-wrap:wrap;
+  margin-top:1rem;
+}
+
+.sip-btn{
+  display:inline-block;
+  padding: 1rem 1.4rem;
+  border-radius: 999px;
+  font-weight: 900;
+  text-decoration:none;
+  border: 1px solid rgba(0,0,0,.18);
+  background:#000;
+  color:#fff;
+}
+
+.sip-btn:hover{ opacity:.92; }
+
+.sip-btn-outline{
+  background:#fff;
+  color:#000;
+}
+
+/* Featured tiles */
+.sip-featured{
+  margin: 4rem auto 0; /* gap from CTA */
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 900px){
+  .sip-featured{ grid-template-columns: 1fr; }
+}
+
+.sip-feature{
+  text-decoration:none;
+  color:inherit;
+}
+
+.sip-feature-img{
+  position:relative;
+  width:100%;
+  padding-top:56.25%;
+  overflow:hidden;
+  border-radius:18px;
+}
+
+.sip-feature-img img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition: transform .2s ease;
+}
+
+.sip-feature:hover .sip-feature-img img{
+  transform: scale(1.02);
+}
+
+.sip-feature-label{
+  margin-top:.75rem;
+  font-weight: 900;
+  font-size: 1.1rem;
+}
+
+/* Sections */
+.sip-section{
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(0,0,0,.12);
+}
+
+.sip-section h2{
+  font-weight: 900;
+  margin: 0 0 .75rem;
+}
+
+.sip-section ul{
+  margin:0;
+  padding-left: 1.1rem;
+}
+
+/* ---------- Gallery Carousels ---------- */
+.carousel-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+}
+
+.carousel-wrap{
+  position:relative;
+  margin-top:1rem;
+}
+
+.carousel{
+  max-width: 1280px;
+  margin: 0 auto;
+
+  display:flex;
+  gap: 1.25rem;
+
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  -webkit-overflow-scrolling:touch;
+
+  padding: 1rem 5rem 1.25rem 5rem;
+}
+
+.carousel-card{
+  flex: 0 0 auto;
+  width: 560px;
+  scroll-snap-align:start;
+}
+
+@media (max-width: 900px){
+  .carousel-card{ width: 92vw; }
+  .carousel{ padding-left: 4rem; padding-right: 4rem; }
+}
+
+.carousel-thumb{
+  position:relative;
+  width:100%;
+  padding-top:56.25%;
+  overflow:hidden;
+  border-radius:18px;
+}
+
+.carousel-title{
+  margin-top:.75rem;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.card-slide{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0;
+  transition: opacity .22s ease;
+  pointer-events:none;
+  display:block;
+}
+
+.card-slide.is-active{ opacity:1; }
+
+/* Row overlay arrows */
+.carousel-overlay{
+  position:absolute;
+  top:50%;
+  transform: translateY(-50%);
+  z-index: 10;
+
+  width:56px;
+  height:56px;
+  border-radius:999px;
+
+  border: 1px solid rgba(0,0,0,.18);
+  background: rgba(255,255,255,.96);
+
+  font-size: 30px;
+  line-height: 1;
+  cursor:pointer;
+
+  opacity:0;
+  transition: opacity .15s ease;
+}
+
+.carousel-wrap:hover .carousel-overlay{ opacity:.95; }
+
+.carousel-overlay.left{ left: 10px; }
+.carousel-overlay.right{ right: 10px; }
+
+.carousel-overlay:disabled{ opacity:.28; cursor:default; }
+
+/* Per-card arrows */
+.card-nav{
+  position:absolute;
+  top:50%;
+  transform: translateY(-50%);
+  z-index: 11;
+
+  width:44px;
+  height:44px;
+  border-radius:999px;
+
+  border: 1px solid rgba(0,0,0,.18);
+  background: rgba(255,255,255,.96);
+
+  font-size: 26px;
+  line-height: 1;
+  cursor:pointer;
+
+  opacity:0;
+  transition: opacity .15s ease;
+}
+
+.carousel-thumb:hover .card-nav{ opacity:.95; }
+
+.card-nav.prev{ left: 12px; }
+.card-nav.next{ right: 12px; }
+
+/* ---------- Lightbox ---------- */
+.sip-lightbox{
+  position:fixed;
+  inset:0;
+  background: rgba(0,0,0,.94);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index: 9999;
+  padding: 24px;
+}
+
+.sip-lightbox.is-open{ display:flex; }
+
+.sip-lightbox-img{
+  max-width: 96vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 14px;
+}
+
+.sip-lightbox-close{
+  position:absolute;
+  top:16px;
+  right:16px;
+
+  width:52px;
+  height:52px;
+  border-radius:999px;
+
+  border: 1px solid rgba(255,255,255,.22);
+  background: rgba(255,255,255,.10);
+  color:#fff;
+
+  font-size:30px;
+  line-height:1;
+  cursor:pointer;
+}
+
+/* ---------- Statement header image ---------- */
+main img[alt="Statement header"]{
+  width:100%;
+  max-width: 1280px;
+  border-radius: 18px;
+  display:block;
+  margin: 1rem auto 1.5rem;
+}
+
+/* Readability for long text blocks */
+.measure-wide{ max-width: 70ch; }
