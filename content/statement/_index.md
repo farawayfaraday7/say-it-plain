@@ -1,8 +1,10 @@
 ---
 title: "Statement"
-
 ---
-![Statement header](statement.png")
+
+{{< sipimg src="images/statement.png" alt="Statement header" class="sip-statement-hero" >}}
+
+Your statement text here…
 
 # Statement
 
